@@ -1,4 +1,4 @@
-package com.douzone.mysite.web.guestbook;
+package com.douzone.mysite.mvc.guestbook;
 
 import java.io.IOException;
 
@@ -6,10 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.douzone.mysite.repository.GuestbookRepository;
+import com.douzone.mysite.dao.GuestbookDao;
 import com.douzone.mysite.vo.GuestbookVo;
-import com.douzone.web.Action;
-import com.douzone.web.util.MvcUtils;
+import com.douzone.web.mvc.Action;
+import com.douzone.web.util.MvcUtil;
 
 public class AddAction implements Action {
 
@@ -24,8 +24,8 @@ public class AddAction implements Action {
 		vo.setPassword(password);
 		vo.setMessage(message);
 		
-		new GuestbookRepository().insert(vo);
-		MvcUtils.redirect(request.getContextPath() + "/guestbook", request, response);
+		new GuestbookDao().insert(vo);
+		MvcUtil.redirect(request.getContextPath() + "/guestbook", request, response);
 	}
 
 }
