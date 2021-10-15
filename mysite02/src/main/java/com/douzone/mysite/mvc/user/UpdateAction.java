@@ -35,6 +35,8 @@ public class UpdateAction implements Action {
 		vo.setNo(authUser.getNo());
 
 		new UserDao().update(vo);
+		authUser.setName(name);
+		
 		MvcUtil.redirect(request.getContextPath() + "/user?a=updateform", request, response);
 	}
 }

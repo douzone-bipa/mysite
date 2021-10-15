@@ -34,6 +34,7 @@
 					</tr>
 				</table>
 				<div class="bottom">
+					<a class="l" href="">답글달기</a>
 					<a href="">글목록</a>
 					<a href="">글수정</a>
 				</div>
