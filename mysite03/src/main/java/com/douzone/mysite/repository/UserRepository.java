@@ -14,7 +14,9 @@ import com.douzone.mysite.vo.UserVo;
 @Repository
 public class UserRepository {
 
-	public UserVo findByEmailAndPassword(String email, String password) {
+	public UserVo findByEmailAndPassword(
+			String email, 
+			String password) throws UserRepositoryException {
 		UserVo vo = null;
 		
 		Connection conn = null;
@@ -25,7 +27,7 @@ public class UserRepository {
 			conn = getConnection();
 			
 			String sql =
-				" select no, name " + 
+				" elect no, name " + 
 			    "   from user " + 
 				"  where email=?" + 
 			    "    and password=?";
@@ -46,7 +48,7 @@ public class UserRepository {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("error:" + e);
+			throw new UserRepositoryException(e.toString());
 		} finally {
 			try {
 				if(rs != null) {
