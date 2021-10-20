@@ -16,7 +16,6 @@ import com.douzone.mysite.vo.GuestbookVo;
 @Repository
 public class GuestbookRepository {
 	public List<GuestbookVo> findAll() throws GuestbookRepositoryException {
-		
 		List<GuestbookVo> list = new ArrayList<>();
 		
 		Connection conn = null;
@@ -27,7 +26,7 @@ public class GuestbookRepository {
 			conn = getConnection();
 			
 			String sql =
-				"   elect no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, message" +
+				"   select no, name, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, message" +
 				"     from guestbook" +
 				" order by reg_date desc";
 			pstmt = conn.prepareStatement(sql);
