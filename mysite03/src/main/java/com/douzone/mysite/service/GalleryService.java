@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.douzone.mysite.exception.GalleryServiceException;
 import com.douzone.mysite.repository.GalleryRepository;
 import com.douzone.mysite.vo.GalleryVo;
 
@@ -30,7 +31,7 @@ public class GalleryService {
 		return galleryRepository.delete(no);
 	}
 
-	public void saveImage(MultipartFile file, String comments) {
+	public void saveImage(MultipartFile file, String comments) throws GalleryServiceException {
 		try {
 			File uploadDirectory = new File(SAVE_PATH);
 			if(!uploadDirectory.exists()) {
@@ -38,7 +39,7 @@ public class GalleryService {
 			}
 			
 			if(file.isEmpty()) {
-				throw new RuntimeException("file upload error: image empty");
+				throw new GalleryServiceException("file upload error: image empty");
 			}
 			
 			String originFilename = file.getOriginalFilename();
@@ -56,7 +57,7 @@ public class GalleryService {
 			
 			galleryRepository.insert(vo);
 		} catch(IOException ex) {
-			throw new RuntimeException("file upload error:" + ex);
+			throw new GalleryServiceException("file upload error:" + ex);
 		}
 	}
 	
