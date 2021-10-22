@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.douzone.mysite.security.Auth;
 import com.douzone.mysite.service.BoardService;
 import com.douzone.mysite.vo.BoardVo;
 import com.douzone.mysite.vo.UserVo;
@@ -43,7 +44,6 @@ public class BoardController {
 		model.addAttribute( "boardVo", boardVo );
 		return "board/view";
 	}
-	
 
 	@RequestMapping( "/delete/{no}" )
 	public String delete(
@@ -102,14 +102,9 @@ public class BoardController {
 				"&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
 	}
 
+	@Auth
 	@RequestMapping( value="/write", method=RequestMethod.GET )	
-	public String write(HttpSession session) {
-		// 접근제어(Access Control List)
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		if(authUser == null) {
-			return "redirect:/user/login";
-		}
-		//////////////////////////////////////////////////////////		
+	public String write() {
 		return "board/write";
 	}
 
