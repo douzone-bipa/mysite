@@ -104,6 +104,12 @@ public class BoardController {
 
 	@RequestMapping( value="/write", method=RequestMethod.GET )	
 	public String write(HttpSession session) {
+		// 접근제어(Access Control List)
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		if(authUser == null) {
+			return "redirect:/user/login";
+		}
+		//////////////////////////////////////////////////////////		
 		return "board/write";
 	}
 
