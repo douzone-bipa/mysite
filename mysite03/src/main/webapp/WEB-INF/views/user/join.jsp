@@ -28,7 +28,7 @@ $(function(){
 			success: function(response) {
 				console.log(response);
 				if(response.result != "success") {
-					console.error(reponse.message);
+					console.error(response.message);
 					return;
 				}
 				
