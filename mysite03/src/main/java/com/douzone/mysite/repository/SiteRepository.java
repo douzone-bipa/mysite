@@ -11,7 +11,12 @@ public class SiteRepository {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public SiteVo find(Boolean digest) {
-		return sqlSession.selectOne("site.find", digest);
+	public SiteVo find() {
+		return sqlSession.selectOne("site.find");
+	}
+
+	public boolean update(SiteVo vo) {
+		int count = sqlSession.update("site.update", vo);
+		return count == 1;
 	}
 }

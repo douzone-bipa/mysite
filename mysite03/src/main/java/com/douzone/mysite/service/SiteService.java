@@ -10,12 +10,12 @@ import com.douzone.mysite.vo.SiteVo;
 public class SiteService {
 	@Autowired
 	private SiteRepository siteRepository;
-	
+
 	public SiteVo getSite() {
-		return getSite(false);
+		return siteRepository.find();
 	}
 
-	public SiteVo getSite(Boolean digest) {
-		return siteRepository.find(digest);
+	public boolean update(SiteVo siteVo) {
+		return siteRepository.update(siteVo);
 	}
 }
