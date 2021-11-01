@@ -12,6 +12,7 @@
 <body>
 	<div id="container">
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
+		<h1>Hello~</h1>
 		<div id="wrapper">
 			<div id="content">
 				<div id="site-introduction">
