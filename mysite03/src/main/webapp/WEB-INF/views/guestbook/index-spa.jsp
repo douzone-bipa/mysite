@@ -100,8 +100,8 @@
 			// 삭제 다이알로 객체 만들기
 			var dialogDelete = $("#dialog-delete-form").dialog({
 				autoOpen: false,
-				width: 300,
-				height: 220,
+				width: 400,
+				height: 300,
 				modal: true,
 				buttons: {
 					"삭제": function(){
